@@ -1,9 +1,15 @@
-LIBS=
-CFLAG=-g
+CXXFLAGS =	-O2 -g -Wall -fmessage-length=0
 
-ec-group:ec-group.o
-	g++ $(CFLAG) -o ec-group ec-group.o $(LIBS)
-ec-group.o:ec-group.cpp
-	g++ -c ec-group.cpp 
+OBJS =		ec-group.o
+
+LIBS =
+
+TARGET =	ec-group
+
+$(TARGET):	$(OBJS)
+	$(CXX) -o $(TARGET) $(OBJS) $(LIBS)
+
+all:	$(TARGET)
+
 clean:
-	rm -f testfcgi.o
+	rm -f $(OBJS) $(TARGET)

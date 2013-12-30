@@ -10,10 +10,15 @@
 #include <string.h>
 #include <strings.h>
 #include <iostream>
+#include <vector>
+#include "member.h"
 
 using namespace std;
 
 #define MAX_EVENTS 500
+
+//todo : add multi-cast method to find other member
+
 
 struct myevent_s{
 	int fd;
@@ -152,6 +157,12 @@ void InitListenSocket(int epollFd,short port){
 	sin.sin_port = htons(port);
 	bind(listenFd,(const sockaddr*)&sin,sizeof(sin));
 	listen(listenFd,5);
+}
+int setNonBlocking(int sockfd){
+	if(fcntl(sockfd,F_SETFL,fcntl(sockfd,F_GETFD,0)|O_NONBLOCK) == 1){
+		return -1;
+	}
+	return 0;
 }
 
 int main(int argc,char ** argv){
