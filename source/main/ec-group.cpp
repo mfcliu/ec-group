@@ -177,6 +177,7 @@ int main(int argc,char ** argv){
 	InitListenSocket(g_epollFd,port);
 	struct epoll_event events[MAX_EVENTS];
 	printf("server running . port : [%d]\n",port);
+	//todo : add member ship logic
 	int checkPos = 0;
 	while(1){
 		long now = time(NULL);

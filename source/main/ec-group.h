@@ -16,6 +16,8 @@ class EC_GROUP{
 	vector<member> mebers;
 	Config config;
 	member * pMaster;
+	int Start();
+	void setParam();
 };
 
 
